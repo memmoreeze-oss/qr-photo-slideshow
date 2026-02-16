@@ -12,21 +12,53 @@
     h1 {
       color: #222;
     }
+    #photoContainer img {
+      width: 150px;
+      margin: 10px;
+      border-radius: 8px;
+    }
+    input {
+      margin-top: 20px;
+    }
   </style>
 </head>
 <body>
 
 <h1 id="eventTitle">Your Event 🎉</h1>
 
-<p>This is where photos will be uploaded.</p>
+<p>Upload photos for this event:</p>
+
+<input type="file" id="photoUpload" multiple accept="image/*">
+
+<div id="photoContainer"></div>
 
 <script>
-const params = new URLSearchParams(window.location.search);
-const name = params.get("name");
+  // Show event name
+  const params = new URLSearchParams(window.location.search);
+  const name = params.get("name");
+  if (name) {
+    document.getElementById("eventTitle").innerText = name + " 🎉";
+  }
 
-if (name) {
-  document.getElementById("eventTitle").innerText = name + " 🎉";
-}
+  // Handle photo uploads
+  const uploadInput = document.getElementById("photoUpload");
+  const photoContainer = document.getElementById("photoContainer");
+
+  uploadInput.addEventListener("change", function() {
+    const files = uploadInput.files;
+
+    for (let i = 0; i < files.length; i++) {
+      const reader = new FileReader();
+
+      reader.onload = function(e) {
+        const img = document.createElement("img");
+        img.src = e.target.result;
+        photoContainer.appendChild(img);
+      };
+
+      reader.readAsDataURL(files[i]);
+    }
+  });
 </script>
 
 </body>
