@@ -51,10 +51,35 @@
       const reader = new FileReader();
 
       reader.onload = function(e) {
-        const img = document.createElement("img");
-        img.src = e.target.result;
-        photoContainer.appendChild(img);
-      };
+  const wrapper = document.createElement("div");
+  wrapper.style.display = "inline-block";
+  wrapper.style.position = "relative";
+  wrapper.style.margin = "10px";
+
+  const img = document.createElement("img");
+  img.src = e.target.result;
+  img.style.width = "150px";
+  img.style.borderRadius = "8px";
+
+  const deleteBtn = document.createElement("button");
+  deleteBtn.innerText = "X";
+  deleteBtn.style.position = "absolute";
+  deleteBtn.style.top = "5px";
+  deleteBtn.style.right = "5px";
+  deleteBtn.style.backgroundColor = "red";
+  deleteBtn.style.color = "white";
+  deleteBtn.style.border = "none";
+  deleteBtn.style.borderRadius = "50%";
+  deleteBtn.style.cursor = "pointer";
+
+  deleteBtn.addEventListener("click", function() {
+    wrapper.remove();
+  });
+
+  wrapper.appendChild(img);
+  wrapper.appendChild(deleteBtn);
+  photoContainer.appendChild(wrapper);
+};
 
       reader.readAsDataURL(files[i]);
     }
