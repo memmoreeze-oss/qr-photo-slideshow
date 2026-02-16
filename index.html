@@ -46,12 +46,9 @@
 function createEvent() {
   var name = document.getElementById("eventName").value;
 
-  if (name === "") {
-    alert("Please enter an event name!");
-    return;
-  }
+  alert("You typed: " + name);
 
-  window.location.href = "event.html?name=" + encodeURIComponent(name);
+  window.location.href = "event.html?name=" + name;
 }
 </script>
 
