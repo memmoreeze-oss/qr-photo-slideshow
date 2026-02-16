@@ -24,21 +24,23 @@
     button:hover {
       background-color: #45a049;
     }
+    input {
+      padding: 10px;
+      font-size: 16px;
+    }
   </style>
 </head>
 <body>
 
-  <h1>Welcome to Memmoreeze</h1>
+<h1>Welcome to My QR Photo Slideshow App 🎉</h1>
 
-<p>Create an event, share a QR code, collect photos, and make a video all in one place!</p>
+<p>Create an event, share a QR code, collect photos, and make a video!</p>
 
-<input type="text" id="eventName" placeholder="Enter event name" style="padding:10px; font-size:16px;" />
+<input type="text" id="eventName" placeholder="Enter event name">
 
 <br><br>
 
-<button onclick="createEvent()">
-  Create Event
-</button>
+<button onclick="createEvent()">Create Event</button>
 
 <script>
 function createEvent() {
@@ -52,5 +54,6 @@ function createEvent() {
   window.location.href = "event.html?name=" + encodeURIComponent(name);
 }
 </script>
+
 </body>
 </html>
